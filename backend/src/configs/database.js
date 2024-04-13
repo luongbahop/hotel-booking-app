@@ -38,4 +38,19 @@ const connectionObject = {
 
 const db = new Sequelize(database, username, password, connectionObject);
 
+export const TABLES = {
+  tbl_users: {
+    table: 'tbl_users',
+    default_attributes: ['user_id', 'email', 'username', 'fullname', 'gender', 'address', 'phone', 'website', 'status', 'avatar', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+  },
+  tbl_hotels: {
+    table: 'tbl_hotels',
+    default_attributes: ['hotel_id', 'title', 'phone', 'description', 'address', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+  },
+  tbl_rooms: {
+    table: 'tbl_rooms',
+    default_attributes: ['room_id', 'hotel_id', 'title', 'description', 'type', 'sale_price', 'price', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+  },
+};
+
 export default db;
