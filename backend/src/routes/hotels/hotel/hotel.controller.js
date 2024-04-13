@@ -101,7 +101,7 @@ export const createHotel = async (req, res) => {
         exe_time: new Date().getTime() - start,
       });
     }
-    const data = await Hotel.create(req.body);
+    const data = await Hotel.create({ ...req.body, created_by: req?.userInfo?.user_id });
 
     return res.status(201).json({
       data,
@@ -133,7 +133,7 @@ export const updateHotel = async (req, res) => {
 
     if (data) {
       await Hotel.update(
-        req.body,
+        { ...req.body, updated_by: req?.userInfo?.user_id },
         {
           where: {
             hotel_id: id,
@@ -179,6 +179,13 @@ export const deleteHotel = async (req, res) => {
         hotel_id: id,
       },
     });
+    if (!data) {
+      return res.status(500).send({
+        error: `Hotel ID = ${id} is not found.`,
+        success: false,
+        exe_time: new Date().getTime() - start,
+      });
+    }
     await Hotel.destroy({
       where: {
         hotel_id: id,

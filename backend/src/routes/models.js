@@ -58,7 +58,7 @@ const initData = async () => {
     const hotelsData = [
       {
         title: 'Holiday Inn Express Singapore Clarke Quay',
-        phone: '1234567890',
+        phone: '1234567891',
         description: 'The hotel has 39 parking spaces available. For Monday to Saturday (6am-5pm)',
         address: '123 Example Street',
         city: 'Singapore',
@@ -69,7 +69,7 @@ const initData = async () => {
       },
       {
         title: 'InterContinental Singapore',
-        phone: '1234567890',
+        phone: '1234567892',
         description: 'Car parking is available at Bugis Junction Car Park. Charges apply.',
         address: '456 Example Avenue',
         city: 'Singapore',

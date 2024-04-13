@@ -79,11 +79,11 @@ export const getBookingById = async (req, res) => {
 export const createBooking = async (req, res) => {
   const start = new Date().getTime();
   try {
-    const { title } = req.body;
-    if (!title) {
+    const { room_id } = req.body;
+    if (!room_id) {
       return res.status(500).json({
         success: false,
-        error: 'Title is a required field.',
+        error: 'Room ID is a required field.',
         exe_time: new Date().getTime() - start,
       });
     }
@@ -165,6 +165,13 @@ export const deleteBooking = async (req, res) => {
         booking_id: id,
       },
     });
+    if (!data) {
+      return res.status(500).send({
+        error: `Booking ID = ${id} is not found.`,
+        success: false,
+        exe_time: new Date().getTime() - start,
+      });
+    }
     await Booking.destroy({
       where: {
         booking_id: id,

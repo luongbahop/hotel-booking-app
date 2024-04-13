@@ -87,7 +87,7 @@ export const createRoom = async (req, res) => {
         exe_time: new Date().getTime() - start,
       });
     }
-    const data = await Room.create(req.body);
+    const data = await Room.create({ ...req.body, created_by: req?.userInfo?.user_id });
 
     return res.status(201).json({
       data,
@@ -119,7 +119,7 @@ export const updateRoom = async (req, res) => {
 
     if (data) {
       await Room.update(
-        req.body,
+        { ...req.body, updated_by: req?.userInfo?.user_id },
         {
           where: {
             room_id: id,
@@ -165,6 +165,13 @@ export const deleteRoom = async (req, res) => {
         room_id: id,
       },
     });
+    if (!data) {
+      return res.status(500).send({
+        error: `Room ID = ${id} is not found.`,
+        success: false,
+        exe_time: new Date().getTime() - start,
+      });
+    }
     await Room.destroy({
       where: {
         room_id: id,

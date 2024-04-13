@@ -79,11 +79,27 @@ export const getCustomerById = async (req, res) => {
 export const createCustomer = async (req, res) => {
   const start = new Date().getTime();
   try {
-    const { title } = req.body;
-    if (!title) {
+    const { fullname, email, phone } = req.body;
+    if (!fullname) {
       return res.status(500).json({
         success: false,
-        error: 'Title is a required field.',
+        error: 'Fullname is a required field.',
+        exe_time: new Date().getTime() - start,
+      });
+    }
+
+    if (!email) {
+      return res.status(500).json({
+        success: false,
+        error: 'E-mail is a required field.',
+        exe_time: new Date().getTime() - start,
+      });
+    }
+
+    if (!phone) {
+      return res.status(500).json({
+        success: false,
+        error: 'Phone is a required field.',
         exe_time: new Date().getTime() - start,
       });
     }
@@ -165,6 +181,13 @@ export const deleteCustomer = async (req, res) => {
         customer_id: id,
       },
     });
+    if (!data) {
+      return res.status(500).send({
+        error: `Customer ID = ${id} is not found.`,
+        success: false,
+        exe_time: new Date().getTime() - start,
+      });
+    }
     await Customer.destroy({
       where: {
         customer_id: id,
