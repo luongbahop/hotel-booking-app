@@ -21,13 +21,44 @@ In order to test API, please import postman collection and environment files in 
 
 #### Start app locally
 
+Step 1: Download source code.
+
 ```bash
 
 git clone https://github.com/luongbahop/hotel-booking-app.git
 cd hotel-booking-app/backend
+```
+
+Step 2: Create .env file in folder /backend
+
+```bash
+# APP configs
+APP_PORT=3001
+APP_ENV='development'
+APP_VERSION='1.0.0'
+
+# DATABASE configs
+DB_HOST='localhost'
+DB_DIALECT='mysql'
+DB_DATABASE='booking_hotel'
+DB_USERNAME='root'
+DB_PASSWORD=''
+
+# AUTH configs
+AUTH_ACCESS_SECRET='access secret booking hotel'
+AUTH_ACCESS_TOKEN_LIFE='1d'
+AUTH_REFRESH_SECRET='refresh secret booking hotel'
+AUTH_REFRESH_TOKEN_LIFE='30d'
+```
+
+Step 3: Create and import demo database
+Use the demo database ./backend/Database/booking_hotel.sql and import to MySQL
+
+Step 4: Install packages and run the project in local
+
+```bash
 npm install
 npm run dev
-
 ```
 
 #### Available scripts
