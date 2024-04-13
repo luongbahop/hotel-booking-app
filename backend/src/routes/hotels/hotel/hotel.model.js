@@ -16,10 +16,10 @@ const Hotel = db.define(
       },
     },
     title: {
-      type: Sequelize.STRING(300),
+      type: Sequelize.STRING(255),
     },
     phone: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING(255),
     },
     description: {
       type: Sequelize.TEXT('long'),
@@ -28,7 +28,7 @@ const Hotel = db.define(
       type: Sequelize.TEXT('long'),
     },
     image: {
-      type: Sequelize.STRING(300),
+      type: Sequelize.STRING(255),
     },
     status: {
       type: Sequelize.ENUM('active', 'inactive'),

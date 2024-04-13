@@ -1,12 +1,12 @@
 import { Sequelize } from 'sequelize';
-import db, { TABLES } from '../../../configs/database.js';
+import db, { TABLES } from '../../configs/database.js';
 
 const { DataTypes } = Sequelize;
 
-const Room = db.define(
-  TABLES.tbl_rooms.table,
+const Customer = db.define(
+  TABLES.tbl_customers.table,
   {
-    room_id: {
+    customer_id: {
       type: Sequelize.BIGINT,
       primaryKey: true,
       unique: true,
@@ -15,43 +15,40 @@ const Room = db.define(
         isInt: true,
       },
     },
-    hotel_id: {
-      type: Sequelize.BIGINT,
+    email: {
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        isNumeric: true,
-        isInt: true,
         notNull: {
           args: true,
-          msg: 'Hotel ID is required.',
+          msg: 'E-mail is required.',
+        },
+        isEmail: {
+          args: true,
+          msg: 'E-mail is invalid format.',
         },
       },
     },
-    title: {
+    fullname: {
       type: Sequelize.STRING(255),
     },
-    description: {
-      type: Sequelize.TEXT('long'),
+    birthday: {
+      type: Sequelize.DATE,
     },
-    price: {
-      type: Sequelize.DOUBLE,
+    gender: {
+      type: Sequelize.TINYINT,
       validate: {
+        isInt: true,
         isNumeric: true,
       },
     },
-    capacity: {
-      type: Sequelize.INTEGER,
-    },
-    number_of_rooms: {
-      type: Sequelize.INTEGER,
-    },
-    type: {
+    phone: {
       type: Sequelize.STRING(255),
     },
-    sale_price: {
-      type: Sequelize.DOUBLE,
+    address: {
+      type: Sequelize.STRING(200),
     },
-    image: {
+    avatar: {
       type: Sequelize.STRING(255),
     },
     status: {
@@ -80,4 +77,4 @@ const Room = db.define(
   }
 );
 
-export default Room;
+export default Customer;

@@ -33,7 +33,7 @@ const User = db.define(
       },
     },
     username: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING(255),
       allowNull: false,
       unique: {
         args: true,
@@ -51,7 +51,7 @@ const User = db.define(
       },
     },
     fullname: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING(255),
       allowNull: false,
       validate: {
         notNull: {
@@ -65,7 +65,7 @@ const User = db.define(
       },
     },
     password: {
-      type: Sequelize.STRING(200),
+      type: Sequelize.STRING(255),
       allowNull: false,
       validate: {
         notNull: {
@@ -86,10 +86,10 @@ const User = db.define(
       },
     },
     phone: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING(255),
     },
     website: {
-      type: Sequelize.STRING(200),
+      type: Sequelize.STRING(255),
     },
     address: {
       type: Sequelize.STRING(200),
@@ -99,7 +99,7 @@ const User = db.define(
       defaultValue: 'active',
     },
     avatar: {
-      type: Sequelize.STRING(200),
+      type: Sequelize.STRING(255),
     },
     token: {
       type: Sequelize.STRING,

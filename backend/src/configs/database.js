@@ -43,13 +43,17 @@ export const TABLES = {
     table: 'tbl_users',
     default_attributes: ['user_id', 'email', 'username', 'fullname', 'gender', 'address', 'phone', 'website', 'status', 'avatar', 'created_by', 'updated_by', 'created_at', 'updated_at'],
   },
+  tbl_customers: {
+    table: 'tbl_customers',
+    default_attributes: ['customer_id', 'email', 'fullname', 'birthday', 'gender', 'address', 'phone', 'status', 'avatar', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+  },
   tbl_hotels: {
     table: 'tbl_hotels',
     default_attributes: ['hotel_id', 'title', 'phone', 'description', 'address', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
   },
   tbl_rooms: {
     table: 'tbl_rooms',
-    default_attributes: ['room_id', 'hotel_id', 'title', 'description', 'type', 'sale_price', 'price', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+    default_attributes: ['room_id', 'hotel_id', 'title', 'description', 'type', 'capacity', 'number_of_rooms', 'sale_price', 'price', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
   },
 };
 
