@@ -4,7 +4,7 @@ import { TABLES } from '../../../configs/database.js';
 import { buildFindAllConditions } from '../../../helpers/common.helper.js';
 
 const Op = Sequelize.Op;
-const { Room } = models;
+const { Hotel, Room, User } = models;
 
 // get all rooms
 export const getRooms = async (req, res) => {
@@ -21,6 +21,11 @@ export const getRooms = async (req, res) => {
           where: {
             [Op.or]: [{ title: { [Op.like]: `%${keyword}%` } }, { description: { [Op.like]: `%${keyword}%` } }],
           },
+          include: [
+            { model: Hotel, as: 'hotel' },
+            { model: User, as: 'author', attributes: TABLES.tbl_users.default_attributes },
+            { model: User, as: 'editor', attributes: TABLES.tbl_users.default_attributes },
+          ],
         },
         { orderBy: 'room_id', order: 'DESC' }
       )
@@ -52,6 +57,11 @@ export const getRoomById = async (req, res) => {
       where: {
         room_id: id,
       },
+      include: [
+        { model: Hotel, as: 'hotel' },
+        { model: User, as: 'author', attributes: TABLES.tbl_users.default_attributes },
+        { model: User, as: 'editor', attributes: TABLES.tbl_users.default_attributes },
+      ],
     });
     if (!data) {
       return res.status(500).send({

@@ -4,7 +4,7 @@ import { TABLES } from '../../configs/database.js';
 import { buildFindAllConditions } from '../../helpers/common.helper.js';
 
 const Op = Sequelize.Op;
-const { Customer, Room } = models;
+const { Customer, Booking } = models;
 
 // get all customers
 export const getCustomers = async (req, res) => {
@@ -52,6 +52,9 @@ export const getCustomerById = async (req, res) => {
       where: {
         customer_id: id,
       },
+      include: [
+        { model: Booking, as: 'bookings' },
+      ],
     });
     if (!data) {
       return res.status(500).send({

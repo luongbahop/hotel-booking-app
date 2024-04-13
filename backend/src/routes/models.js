@@ -207,6 +207,9 @@ Room.belongsTo(Hotel, { foreignKey: 'hotel_id', as: 'hotel' });
 Room.hasMany(Booking, { foreignKey: 'room_id', as: 'bookings' });
 Booking.belongsTo(Room, { foreignKey: 'room_id', as: 'room' });
 
+Customer.hasMany(Booking, { foreignKey: 'created_by', as: 'bookings' });
+Booking.belongsTo(Customer, { foreignKey: 'created_by', as: 'booking' });
+
 export default {
   User,
   Customer,
