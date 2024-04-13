@@ -2,6 +2,7 @@ import db from '../configs/database.js';
 
 import User from './users/user.model.js';
 import Customer from './customers/customer.model.js';
+import Booking from './bookings/booking.model.js';
 import Hotel from './hotels/hotel/hotel.model.js';
 import Room from './hotels/room/room.model.js';
 
@@ -14,6 +15,7 @@ const initData = async () => {
     await Customer.destroy({ where: {}, force: true });
     await Room.destroy({ where: {}, force: true });
     await Hotel.destroy({ where: {}, force: true });
+    await Booking.destroy({ where: {}, force: true });
 
     // Create an array of users
     const userData = {
@@ -146,6 +148,27 @@ const initData = async () => {
 
     Room.bulkCreate(roomsData);
     console.log('Created rooms successfully');
+
+    // Create an array of bookings
+    const bookingsData = [
+      {
+        room_id: 1,
+        check_in_date: '2024-04-20 03:10:31',
+        check_out_date: '2024-04-21 03:10:31',
+        total_price: 200,
+        created_by: 1,
+      },
+      {
+        room_id: 2,
+        check_in_date: '2024-04-20 03:10:31',
+        check_out_date: '2024-04-21 03:10:31',
+        total_price: 400,
+        created_by: 1,
+      },
+    ];
+
+    Booking.bulkCreate(bookingsData);
+    console.log('Created bookings successfully');
   } catch (error) {
     console.log('Error while initializing data:', error);
   }
@@ -175,12 +198,19 @@ Hotel.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 Room.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
 Room.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 
+Booking.belongsTo(Customer, { foreignKey: 'created_by', as: 'author' });
+Booking.belongsTo(Customer, { foreignKey: 'updated_by', as: 'editor' });
+
 Hotel.hasMany(Room, { foreignKey: 'hotel_id', as: 'rooms' });
-Room.belongsTo(Hotel, { foreignKey: 'hotel_id', as: 'room' });
+Room.belongsTo(Hotel, { foreignKey: 'hotel_id', as: 'hotel' });
+
+Room.hasMany(Booking, { foreignKey: 'room_id', as: 'bookings' });
+Booking.belongsTo(Room, { foreignKey: 'room_id', as: 'room' });
 
 export default {
   User,
   Customer,
   Hotel,
-  Room
+  Room,
+  Booking
 };

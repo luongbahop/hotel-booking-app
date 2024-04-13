@@ -55,6 +55,10 @@ export const TABLES = {
     table: 'tbl_rooms',
     default_attributes: ['room_id', 'hotel_id', 'title', 'description', 'type', 'capacity', 'number_of_rooms', 'sale_price', 'price', 'image', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'],
   },
+  tbl_bookings: {
+    table: 'tbl_bookings',
+    default_attributes: ['booking_id', 'room_id', 'total_price', 'check_in_date', 'check_out_date', 'created_by', 'updated_by', 'created_at', 'updated_at'],
+  },
 };
 
 export default db;
