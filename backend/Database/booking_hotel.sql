@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2024 at 10:25 AM
+-- Generation Time: Apr 14, 2024 at 06:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,15 @@ CREATE TABLE `tbl_bookings` (
 INSERT INTO `tbl_bookings` (`booking_id`, `room_id`, `total_price`, `check_in_date`, `check_out_date`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, 200, '2024-04-19 20:10:31', '2024-04-21 20:10:31', 1, NULL, '2024-04-13 03:13:45', '2024-04-13 03:58:00'),
 (2, 2, 400, '2024-04-19 20:10:31', '2024-04-20 20:10:31', 1, NULL, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(3, 5, 200, '2024-04-19 20:10:31', '2024-04-20 20:10:31', 1, NULL, '2024-04-13 03:57:12', '2024-04-13 03:57:12');
+(3, 5, 200, '2024-04-19 20:10:31', '2024-04-20 20:10:31', 1, NULL, '2024-04-13 03:57:12', '2024-04-13 03:57:12'),
+(14, 1, 200, '2024-05-19 13:10:31', '2024-05-20 13:10:31', 1, NULL, '2024-04-13 09:07:26', '2024-04-13 09:07:26'),
+(15, 5, 200, '2024-05-13 13:10:31', '2024-05-16 13:10:31', 1, NULL, '2024-04-14 06:20:15', '2024-04-14 06:20:15'),
+(16, 3, 4800, '2024-04-13 17:00:00', '2024-04-20 16:59:59', 1, NULL, '2024-04-14 15:20:54', '2024-04-14 15:20:54'),
+(17, 3, 800, '2024-04-13 17:00:00', '2024-04-15 16:59:59', 1, NULL, '2024-04-14 15:22:01', '2024-04-14 15:22:01'),
+(18, 1, 500, '2024-04-13 17:00:00', '2024-04-15 16:59:59', 1, NULL, '2024-04-14 15:35:51', '2024-04-14 15:35:51'),
+(19, 1, 500, '2024-04-13 17:00:00', '2024-04-15 16:59:59', 1, NULL, '2024-04-14 15:54:21', '2024-04-14 15:54:21'),
+(20, 1, 500, '2024-04-13 17:00:00', '2024-04-15 16:59:59', 1, NULL, '2024-04-14 15:55:56', '2024-04-14 15:55:56'),
+(21, 1, 500, '2024-04-13 17:00:00', '2024-04-15 16:59:59', 1, NULL, '2024-04-14 15:56:15', '2024-04-14 15:56:15');
 
 -- --------------------------------------------------------
 
@@ -104,9 +112,13 @@ CREATE TABLE `tbl_hotels` (
 --
 
 INSERT INTO `tbl_hotels` (`hotel_id`, `title`, `phone`, `description`, `address`, `image`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Holiday Inn Express Singapore Clarke Quay', '1234567890', 'Car parking is available at Lavender Junction Car Park. Charges apply.', '123 Example Street', NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:39:08'),
-(2, 'InterContinental Singapore', '1234567890', 'Car parking is available at Bugis Junction Car Park. Charges apply.', '456 Example Avenue', NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(3, 'V Hotel', '1234567893', 'Car parking is available at Bugis Junction Car Park. Charges apply.', '888 Example Avenue', NULL, 'active', 1, NULL, '2024-04-13 03:32:44', '2024-04-13 03:32:44');
+(1, 'Holiday Inn Express Singapore Clarke Quay', '1234567890', 'Car parking is available at Bugis Junction Car Park. Charges apply. The hotel is part of Raffles City Complex, offering a convention and shopping centre. A well-equipped fitness centre and 6 tennis courts are available. 24-hour room service is available for guests’ convenience. Guests can approach the 24-hour front desk to request for currency exchange, paperless Chinese newspapers and concierge services. Staff are able to converse in English, Malay and Mandarin, Indonesian and Filipino.', '123 Example Street', 'hotel2.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:39:08'),
+(2, 'InterContinental Singapore', '1234567890', 'Car parking is available at Bugis Junction Car Park. Charges apply. The hotel is part of Raffles City Complex, offering a convention and shopping centre. A well-equipped fitness centre and 6 tennis courts are available. 24-hour room service is available for guests’ convenience. Guests can approach the 24-hour front desk to request for currency exchange, paperless Chinese newspapers and concierge services. Staff are able to converse in English, Malay and Mandarin, Indonesian and Filipino.', '456 Example Avenue', 'hotel3.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(3, 'Viet Hotel', '1234567893', 'The Stamford is a 10-minute train ride from the shopping district of Orchard Road. Singapore Flyer is a 15-minute train ride away. Nightlife options at Boat Quay and Clarke Quay are approximately a 20-minute walk away.', '888 Example Avenue', 'hotel1.png', 'active', 1, NULL, '2024-04-13 03:32:44', '2024-04-13 03:32:44'),
+(5, 'ST Signature Bugis Middle', '1234567893', 'The Stamford is a 10-minute train ride from the shopping district of Orchard Road. Singapore Flyer is a 15-minute train ride away. Nightlife options at Boat Quay and Clarke Quay are approximately a 20-minute walk away.', '999 Example Avenue', 'hotel5.png', 'active', 1, 1, '2024-04-14 11:05:17', '2024-04-14 11:05:39'),
+(6, 'The Fullerton Hotel Singapore', '1234567893', 'The Stamford is a 10-minute train ride from the shopping district of Orchard Road. Singapore Flyer is a 15-minute train ride away. Nightlife options at Boat Quay and Clarke Quay are approximately a 20-minute walk away.', '999 Example Avenue', 'hotel6.png', 'active', 1, NULL, '2024-04-14 11:06:08', '2024-04-14 11:06:08'),
+(7, 'JEN Singapore Orchardgateway by Shangri-La', '1234567893', 'Car parking is available at Bugis Junction Car Park. Charges apply.Car parking is available at Bugis Junction Car Park. Charges apply. The hotel is part of Raffles City Complex, offering a convention and shopping centre. A well-equipped fitness centre and 6 tennis courts are available. 24-hour room service is available for guests’ convenience. Guests can approach the 24-hour front desk to request for currency exchange, paperless Chinese newspapers and concierge services. Staff are able to converse in English, Malay and Mandarin, Indonesian and Filipino.', '999 Example Avenue', 'hotel7.png', 'active', 1, NULL, '2024-04-14 11:06:26', '2024-04-14 11:06:26'),
+(8, 'Paradox Singapore Merchant Court at Clarke Quay', '1234567893', 'The Stamford is a 10-minute train ride from the shopping district of Orchard Road. Singapore Flyer is a 15-minute train ride away. Nightlife options at Boat Quay and Clarke Quay are approximately a 20-minute walk away.', '999 Example Avenue', 'hotel8.png', 'active', 1, NULL, '2024-04-14 11:06:56', '2024-04-14 11:06:56');
 
 -- --------------------------------------------------------
 
@@ -137,12 +149,19 @@ CREATE TABLE `tbl_rooms` (
 --
 
 INSERT INTO `tbl_rooms` (`room_id`, `hotel_id`, `title`, `description`, `price`, `capacity`, `number_of_rooms`, `type`, `sale_price`, `image`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Classic Single Room', 'Price is one night', 100, 2, 10, 'single', NULL, NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:53:42'),
-(2, 1, 'Classic Double Room', 'Price is one night', 200, 2, 5, 'double', NULL, NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(3, 1, 'Comfort Triple Room', 'Price is one night', 300, 3, 1, 'triple', NULL, NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(4, 2, 'Small Single Room', 'Price is one night', 50, 2, 2, 'single', NULL, NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(5, 2, 'Small Double Room', 'Price is one night', 100, 2, 1, 'double', NULL, NULL, 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
-(16, 3, 'Standard Single Room', 'Price is one night', 100, 2, NULL, NULL, NULL, NULL, 'active', 1, NULL, '2024-04-13 03:53:07', '2024-04-13 03:53:07');
+(1, 1, 'Classic Single Room', 'Each room comes with a flat-screen cable TV with local Chinese channels and a tea/coffee maker.', 500, 2, 10, 'single', NULL, 'room1.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:53:42'),
+(2, 1, 'Classic Double Room', 'Each room comes with a flat-screen cable TV with local Chinese channels and a tea/coffee maker.', 600, 2, 5, 'double', NULL, 'room2.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(3, 1, 'Comfort Triple Room', 'Each room comes with a flat-screen cable TV with local Chinese channels and a tea/coffee maker.', 800, 8, 1, 'triple', NULL, 'room3.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(4, 2, 'Small Single Room', '12 restaurants and bars serving an extensive range of cuisines including Peranakan and Japanese dishes', 50, 2, 2, 'single', NULL, 'room4.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(5, 2, 'Small Double Room', '12 restaurants and bars serving an extensive range of cuisines including Peranakan and Japanese dishes', 100, 2, 1, 'double', NULL, 'room5.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(16, 3, 'Standard Single Room', '12 restaurants and bars serving an extensive range of cuisines including Peranakan and Japanese dishes', 100, 2, NULL, NULL, NULL, 'room6.png', 'active', 1, NULL, '2024-04-13 03:53:07', '2024-04-13 03:53:07'),
+(17, 8, 'Classic Single Room', '12 restaurants and bars serving an extensive range of cuisines including Peranakan and Japanese dishes', 100, 2, 10, 'single', NULL, 'room1.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:53:42'),
+(18, 8, 'Classic Double Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 200, 2, 5, 'double', NULL, 'room2.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(19, 8, 'Comfort Triple Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 300, 3, 1, 'triple', NULL, 'room3.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(20, 7, 'Classic Single Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 100, 2, 10, 'single', NULL, 'room1.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:53:42'),
+(21, 7, 'Classic Double Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 200, 2, 5, 'double', NULL, 'room2.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(22, 6, 'Comfort Triple Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 300, 4, 1, 'triple', NULL, 'room3.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45'),
+(23, 5, 'Comfort Triple Room', 'The hotel\'s 3 bars including SKAI Bar offer fine wines and a comfortable setting where guests can unwind.', 800, 6, 1, 'triple', NULL, 'room3.png', 'active', 1, 1, '2024-04-13 03:13:45', '2024-04-13 03:13:45');
 
 -- --------------------------------------------------------
 
@@ -174,7 +193,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `email`, `username`, `fullname`, `password`, `gender`, `phone`, `website`, `address`, `status`, `avatar`, `token`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'luonghop.lc@gmail.com', 'admin', 'Admin', '$2b$10$mz3.Hm3Yv69Fo/WWIkCnLeqtjY.2.Xv67Q3F658YBRLlRkEFP7RzK', NULL, NULL, NULL, NULL, 'active', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Imx1b25naG9wLmxjQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJmdWxsbmFtZSI6Ikx1b25nIEJhIEhvcCIsInN0YXR1cyI6ImFjdGl2ZSIsImlhdCI6MTcxMjk3OTE0NCwiZXhwIjoxNzEzMDY1NTQ0fQ.gpCsdGZsNpGeIRE62mGWYzH-5c3', 1, 1, '2024-04-13 03:13:44', '2024-04-13 04:00:01'),
+(1, 'luonghop.lc@gmail.com', 'admin', 'Admin', '$2b$10$mz3.Hm3Yv69Fo/WWIkCnLeqtjY.2.Xv67Q3F658YBRLlRkEFP7RzK', NULL, NULL, NULL, NULL, 'active', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Imx1b25naG9wLmxjQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJmdWxsbmFtZSI6IkFkbWluIiwic3RhdHVzIjoiYWN0aXZlIiwiaWF0IjoxNzEzMTExNjk3LCJleHAiOjE3MTMxOTgwOTd9.wE70NAl7aU23c9yFRp7T_-DmtK5re-iSdNK2F', 1, 1, '2024-04-13 03:13:44', '2024-04-14 16:21:37'),
 (2, 'client1@gmail.com', 'client1', 'Client', '$2b$10$pFRmZp5oMOod3aJt2aEl7ur71mJzeSosBftrzLLe4QQxhsBWjY.IC', NULL, NULL, NULL, NULL, 'active', NULL, NULL, 1, NULL, '2024-04-13 04:01:14', '2024-04-13 04:01:14');
 
 --
@@ -237,7 +256,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_bookings`
 --
 ALTER TABLE `tbl_bookings`
-  MODIFY `booking_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `booking_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_customers`
@@ -249,13 +268,13 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_hotels`
 --
 ALTER TABLE `tbl_hotels`
-  MODIFY `hotel_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `hotel_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_rooms`
 --
 ALTER TABLE `tbl_rooms`
-  MODIFY `room_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `room_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
