@@ -16,6 +16,9 @@ import Home from "pages/client/home/Home";
 import HotelList from "pages/client/hotels/hotel-list/HotelList";
 import HotelDetail from "pages/client/hotels/hotel-detail/HotelDetail";
 
+// protected routes
+import Profile from "pages/admin/profile/Profile";
+
 import Error404 from "pages/Error404";
 
 export const AppRouter: React.FC = () => {
@@ -30,11 +33,15 @@ export const AppRouter: React.FC = () => {
           <Route index element={<Home />} />
           <Route path="/hotel-list" element={<HotelList />} />
           <Route path="/hotel/:id" element={<HotelDetail />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
         <Route path={"/auth"} element={authenLayout}>
           <Route index element={<Login />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+        </Route>
+        <Route path={"/admin"} element={protectedLayout}>
+          <Route index element={<Home />} />
         </Route>
         <Route path="404" element={<Error404 />} />
         <Route path="*" element={<Navigate to="/404" replace />} />

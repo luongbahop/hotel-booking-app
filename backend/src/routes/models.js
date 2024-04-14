@@ -1,7 +1,7 @@
 import db from '../configs/database.js';
 
 import User from './users/user.model.js';
-import Customer from './customers/customer.model.js';
+// import Customer from './customers/customer.model.js';
 import Booking from './bookings/booking.model.js';
 import Hotel from './hotels/hotel/hotel.model.js';
 import Room from './hotels/room/room.model.js';
@@ -12,7 +12,7 @@ const initData = async () => {
   try {
     // Truncate tables
     await User.destroy({ where: {}, force: true });
-    await Customer.destroy({ where: {}, force: true });
+    // await Customer.destroy({ where: {}, force: true });
     await Room.destroy({ where: {}, force: true });
     await Hotel.destroy({ where: {}, force: true });
     await Booking.destroy({ where: {}, force: true });
@@ -51,7 +51,7 @@ const initData = async () => {
       },
     ];
 
-    await Customer.bulkCreate(customersData);
+    // await Customer.bulkCreate(customersData);
     console.log('Created customers successfully');
 
     // Create an array of hotels
@@ -189,8 +189,8 @@ if (isSyncDatabase) {
 User.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
 User.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 
-Customer.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
-Customer.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
+// Customer.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
+// Customer.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 
 Hotel.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
 Hotel.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
@@ -198,8 +198,8 @@ Hotel.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 Room.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
 Room.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 
-Booking.belongsTo(Customer, { foreignKey: 'created_by', as: 'author' });
-Booking.belongsTo(Customer, { foreignKey: 'updated_by', as: 'editor' });
+Booking.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
+Booking.belongsTo(User, { foreignKey: 'updated_by', as: 'editor' });
 
 Hotel.hasMany(Room, { foreignKey: 'hotel_id', as: 'rooms' });
 Room.belongsTo(Hotel, { foreignKey: 'hotel_id', as: 'hotel' });
@@ -207,12 +207,12 @@ Room.belongsTo(Hotel, { foreignKey: 'hotel_id', as: 'hotel' });
 Room.hasMany(Booking, { foreignKey: 'room_id', as: 'bookings' });
 Booking.belongsTo(Room, { foreignKey: 'room_id', as: 'room' });
 
-Customer.hasMany(Booking, { foreignKey: 'created_by', as: 'bookings' });
-Booking.belongsTo(Customer, { foreignKey: 'created_by', as: 'booking' });
+User.hasMany(Booking, { foreignKey: 'created_by', as: 'bookings' });
+Booking.belongsTo(User, { foreignKey: 'created_by', as: 'booking' });
 
 export default {
   User,
-  Customer,
+  // Customer,
   Hotel,
   Room,
   Booking

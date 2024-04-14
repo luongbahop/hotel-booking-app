@@ -114,7 +114,10 @@ const HotelDetail: React.FC = () => {
           <Col span={24}>
             <Title level={2}>List of Rooms</Title>
             <SearchForm filters={filters} onChangeFilters={onChangeFilters} />
-            <RoomList rooms={availableRoomsResponse?.data || []} />
+            <RoomList
+              rooms={availableRoomsResponse?.data || []}
+              filters={filters}
+            />
           </Col>
         </Row>
       </Spin>

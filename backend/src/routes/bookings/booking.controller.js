@@ -5,7 +5,7 @@ import { TABLES } from '../../configs/database.js';
 import { buildFindAllConditions } from '../../helpers/common.helper.js';
 
 const Op = Sequelize.Op;
-const { Booking, Room } = models;
+const { Booking, Room, Hotel } = models;
 
 // get all bookings
 export const getBookings = async (req, res) => {
@@ -19,9 +19,21 @@ export const getBookings = async (req, res) => {
         req.query,
         {
           attributes,
-          where: {
-            [Op.or]: [{ total_price: { [Op.like]: `%${keyword}%` } }],
-          },
+          where: {},
+          include: [
+            {
+              model: Room,
+              as: 'room',
+              attributes: TABLES.tbl_rooms.default_attributes,
+              include: [
+                {
+                  model: Hotel,
+                  as: 'hotel',
+                  attributes: TABLES.tbl_hotels.default_attributes,
+                },
+              ],
+            },
+          ],
         },
         { orderBy: 'booking_id', order: 'DESC' }
       )
@@ -105,7 +117,7 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    if (moment(check_in_date).isBefore(moment())) {
+    if (moment(check_in_date).isBefore(moment().subtract(1, 'day').endOf('day'))) {
       return res.status(500).json({
         success: false,
         error: 'Check In Date is not available.',

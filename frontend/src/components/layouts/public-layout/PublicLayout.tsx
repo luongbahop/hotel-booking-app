@@ -3,6 +3,7 @@ import { Layout, Menu } from "antd";
 import { Content, Header } from "antd/lib/layout/layout";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "providers/StoreProvider";
+import { IUser } from "interfaces/user.interface";
 
 export default function PublicLayout() {
   const location = useLocation();
@@ -21,6 +22,8 @@ export default function PublicLayout() {
   React.useEffect(() => {
     if (location.pathname.includes("hotel-list")) {
       setActiveMenu("hotel-list");
+    } else if (location.pathname.includes("profile")) {
+      setActiveMenu("profile");
     } else if (location.pathname === "/") {
       setActiveMenu("home");
     } else {
@@ -53,7 +56,20 @@ export default function PublicLayout() {
                   },
                   {
                     key: "logout",
-                    label: <Link to="/auth/logout">Logout</Link>,
+                    label: (
+                      <Link
+                        to="/"
+                        onClick={() => {
+                          changeAuth({
+                            isAuthenticated: false,
+                            userInfo: {} as IUser,
+                          });
+                          sessionStorage.clear();
+                        }}
+                      >
+                        Logout
+                      </Link>
+                    ),
                   },
                 ]),
           ]}
