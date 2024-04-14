@@ -17,7 +17,7 @@ In order to test API, please import postman collection and environment files in 
 
 - [ExpressJs] https://expressjs.com
 - [Sequelize] https://sequelize.org/docs/v6/core-concepts/model-basics
-- [MySQL] https://www.mysql.com/
+- [MySQL] https://www.mysql.com
 
 #### Start app locally
 
@@ -88,9 +88,10 @@ npm run format
 - Manage Customers: create, read, update, delete customers
 - Manage Bookings: create, read, update, delete bookings
 
-#### To-do task list
+#### To-do tasks list
 
 - Forgot password
 - Send E-mail after user logged in, booked a room...
 - Pagination for get list of records
 - Deploy backend to VPS/Cloud
+- Implement Frontend side
