@@ -6,8 +6,16 @@ Service provides APIs to Search, book and manage the hotel room booking
 
 #### Design Database Schema
 
-Noted: removed module customer. No longer using the module. Remove source soon.
+Note: removed module customer. No longer using the module. Remove source soon.
 ![](./docs/database.png)
+
+#### Screenshots
+
+![](./docs/ui1.png)
+![](./docs/ui2.png)
+![](./docs/ui3.png)
+![](./docs/ui4.png)
+![](./docs/ui5.png)
 
 #### API document with PostMan
 
