@@ -95,7 +95,7 @@ Scripts in backend folder
     "format": "prettier --write \"./src\"",
     "lint": "eslint . --ext .js",
     "lint-fix": "eslint . --ext .js --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/*/* --exit"
   }
 
 ```
@@ -113,11 +113,12 @@ Scripts in frontend folder
 
 #### Completed tasks list
 
-- Manage Hotels: create, read, update, delete hotels
-- Manage Rooms: create, read, update, delete rooms
-- Manage Users: create, read, update, delete users(admin role). Login, change-password
-- Manage Customers: create, read, update, delete customers
-- Manage Bookings: create, read, update, delete bookings
+- Manage Hotels: create, read, update, delete hotels APIs
+- Manage Rooms: create, read, update, delete rooms APIs
+- Manage Users: create, read, update, delete users(admin role). Login, change-password APIs
+- Manage Customers: create, read, update, delete customers APIs
+- Manage Bookings: create, read, update, delete bookings APIs
+- Implement UI: list hotel, view a hotel, get list available hotels, book a room
 
 #### To-do tasks list
 

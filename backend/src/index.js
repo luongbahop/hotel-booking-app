@@ -54,3 +54,5 @@ app.use(function (req, res, next) {
 });
 
 app.listen(APP_PORT, () => console.log(chalk.green(`Server running at http://localhost:${APP_PORT}`)));
+
+export default app;
