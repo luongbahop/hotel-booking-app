@@ -48,7 +48,7 @@ app.get('/api', function (req, res) {
 app.use(function (req, res, next) {
   res.status(404).send({
     name: 'Hotel Booking APIs',
-    msg: 'API route not found',
+    error: 'API route not found',
     status: 'ERROR',
   });
 });

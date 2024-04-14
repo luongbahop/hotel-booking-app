@@ -21,13 +21,13 @@ export const getHotels = async (req, res) => {
           where: {
             [Op.or]: [{ title: { [Op.like]: `%${keyword}%` } }, { description: { [Op.like]: `%${keyword}%` } }, { phone: { [Op.like]: `%${keyword}%` } }],
           },
-          include: [
-            {
-              model: Room,
-              as: 'rooms',
-              attributes: TABLES.tbl_rooms.default_attributes,
-            },
-          ],
+          // include: [
+          //   {
+          //     model: Room,
+          //     as: 'rooms',
+          //     attributes: TABLES.tbl_rooms.default_attributes,
+          //   },
+          // ],
         },
         { orderBy: 'hotel_id', order: 'DESC' }
       )
@@ -59,13 +59,13 @@ export const getHotelById = async (req, res) => {
       where: {
         hotel_id: id,
       },
-      include: [
-        {
-          model: Room,
-          as: 'rooms',
-          attributes: TABLES.tbl_rooms.default_attributes,
-        },
-      ],
+      // include: [
+      //   {
+      //     model: Room,
+      //     as: 'rooms',
+      //     attributes: TABLES.tbl_rooms.default_attributes,
+      //   },
+      // ],
     });
     if (!data) {
       return res.status(500).send({

@@ -1,0 +1,63 @@
+@import "antd/dist/antd.css";
+@import "normalize.css";
+
+@font-face {
+  font-family: "SourceSansPro";
+  src: url(../fonts/SourceSansPro-Regular.otf);
+}
+
+@font-face {
+  font-family: "SourceSansLightPro";
+  src: url(../fonts/SourceSansPro-Light.otf);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: #fff;
+  font-family: "SourceSansLightPro";
+  font-size: 16px;
+}
+
+body,
+button,
+input {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "SourceSansPro";
+}
+
+.app-layout {
+  background: #fff;
+  min-height: 100vh;
+  .app-header {
+    ul {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+  }
+  .app-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.auth-layout {
+  background: #fff;
+  min-height: 100vh;
+  .auth-content {
+    max-width: 1200px;
+    margin: auto;
+  }
+}

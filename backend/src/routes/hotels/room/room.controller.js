@@ -4,16 +4,18 @@ import { TABLES } from '../../../configs/database.js';
 import { buildFindAllConditions } from '../../../helpers/common.helper.js';
 
 const Op = Sequelize.Op;
-const { Hotel, Room, User } = models;
+const { Hotel, Room, User, Booking } = models;
 
 // get all rooms
 export const getRooms = async (req, res) => {
   const start = new Date().getTime();
   try {
     let keyword = req.query.keyword || '';
+    let check_in_date = req.query?.check_in_date;
+    let check_out_date = req.query?.check_out_date || '';
     let attributes = req.query.attributes || TABLES.tbl_rooms.default_attributes;
 
-    const data = await Room.findAll(
+    let data = await Room.findAll(
       buildFindAllConditions(
         req.query,
         {
@@ -31,7 +33,50 @@ export const getRooms = async (req, res) => {
       )
     );
 
+    let bookedSlots = [];
+
+    if (check_in_date && check_out_date) {
+      const roomIDs = data.map((room) => room.room_id);
+      console.log(999, {
+        room_id: roomIDs,
+        check_in_date: {
+          [Op.gte]: check_in_date,
+        },
+        check_out_date: {
+          [Op.lte]: check_out_date,
+        },
+      });
+      bookedSlots = await Booking.findAll({
+        where: {
+          room_id: roomIDs,
+          check_in_date: {
+            [Op.gte]: check_in_date,
+          },
+          check_out_date: {
+            [Op.lte]: check_out_date,
+          },
+        },
+      });
+
+
+      data = data?.map((room) => {
+        const currentBookedSlots = bookedSlots.filter((slot) => slot.room_id === room.room_id);
+        console.log(222, currentBookedSlots.length, room?.number_of_rooms, room.room_id);
+        const isRoomAvailable = currentBookedSlots.length < room?.number_of_rooms;
+        return {
+          ...room.dataValues,
+          booked_slots: currentBookedSlots?.length,
+          available_rooms: room?.number_of_rooms - currentBookedSlots.length,
+          totalRooms: room?.number_of_rooms,
+          is_available: isRoomAvailable,
+        }
+      });
+
+      console.log('avai', data.length);
+    }
+
     return res.status(200).send({
+      bookedSlots,
       data,
       success: true,
       exe_time: new Date().getTime() - start,
