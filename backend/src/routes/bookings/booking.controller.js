@@ -166,12 +166,20 @@ export const createBooking = async (req, res) => {
     const bookedSlots = await Booking.findAll({
       where: {
         room_id: room_id,
-        check_in_date: {
-          [Op.gte]: check_in_date,
-        },
-        check_out_date: {
-          [Op.lte]: check_out_date,
-        },
+        [Op.or]: [
+          {
+            check_in_date: {
+              [Op.gte]: check_in_date,
+              [Op.lte]: check_out_date,
+            },
+          },
+          {
+            check_out_date: {
+              [Op.gte]: check_in_date,
+              [Op.lte]: check_out_date,
+            },
+          }
+        ]
       },
     });
 

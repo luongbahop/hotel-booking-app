@@ -37,24 +37,24 @@ export const getRooms = async (req, res) => {
 
     if (check_in_date && check_out_date) {
       const roomIDs = data.map((room) => room.room_id);
-      console.log(999, {
-        room_id: roomIDs,
-        check_in_date: {
-          [Op.gte]: check_in_date,
-        },
-        check_out_date: {
-          [Op.lte]: check_out_date,
-        },
-      });
+
       bookedSlots = await Booking.findAll({
         where: {
           room_id: roomIDs,
-          check_in_date: {
-            [Op.gte]: check_in_date,
-          },
-          check_out_date: {
-            [Op.lte]: check_out_date,
-          },
+          [Op.or]: [
+            {
+              check_in_date: {
+                [Op.gte]: check_in_date,
+                [Op.lte]: check_out_date,
+              },
+            },
+            {
+              check_out_date: {
+                [Op.gte]: check_in_date,
+                [Op.lte]: check_out_date,
+              },
+            }
+          ]
         },
       });
 
